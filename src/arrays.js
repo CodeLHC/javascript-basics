@@ -1,61 +1,96 @@
 const getNthElement = (index, array) => {
-  // your code here
+  if( index >= array.length ){
+    const newIndex = index - array.length;
+    return array[newIndex];
+  }
+  return array[index];
 };
 
 const arrayToCSVString = array => {
-  // your code here
+  return array.toString();
 };
 
 const csvStringToArray = string => {
-  // your code here
+  return string.split(",");
 };
 
 const addToArray = (element, array) => {
-  // your code here
+  array.push(element);
 };
 
 const addToArray2 = (element, array) => {
-  // your code here
+  const newArray = [...array];
+  newArray.push(element);
+  return newArray;
 };
 
 const removeNthElement = (index, array) => {
-  // your code here
+  array.splice(index, 1);
 };
 
 const numbersToStrings = numbers => {
-  // your code here
+  const newString = numbers.toString();
+  return newString.split(",");
 };
 
 const uppercaseWordsInArray = strings => {
-  // your code here
+  // return strings.toString().toUpperCase().split(",");
+return strings.map((string)=>{
+  return string.toUpperCase();
+})
 };
 
+
+
 const reverseWordsInArray = strings => {
-  // your code here
+  return strings.map((word)=>{
+return word.split("").reverse().join("");
+  })
 };
 
 const onlyEven = numbers => {
-  // your code here
+  return numbers.filter((number)=>{
+    return number % 2 === 0;
+  });
 };
 
 const removeNthElement2 = (index, array) => {
-  // your code here
+  return array.filter((element, i) => {
+    return i !== index;
+  });
 };
 
 const elementsStartingWithAVowel = strings => {
-  // your code here
+  return strings.filter((string)=>{
+const vowels = 'aeiou';
+const lowerCaseString = string.toLowerCase();
+const firstLetter = lowerCaseString[0];
+console.log(firstLetter);
+return vowels.includes(firstLetter);
+  })
 };
 
 const removeSpaces = string => {
-  // your code here
+  return string.split(" ").join("");
 };
 
 const sumNumbers = numbers => {
-  // your code here
+  return numbers.reduce((acc, number)=> {
+    return acc+number;
+  })
 };
 
 const sortByLastLetter = strings => {
-  // your code here
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+  return strings.sort((current,next)=>{
+    const currentLastLetterIndex = current.length - 1;
+    const currentLastLetter = current[currentLastLetterIndex];
+    const nextLastLetterIndex = next.length - 1;
+    const nextLastLetter = next[nextLastLetterIndex];
+    const currentIndexInAlphabet =  alphabet.indexOf(currentLastLetter);
+    const nextIndexInAlphabet =  alphabet.indexOf(nextLastLetter);
+    return currentIndexInAlphabet - nextIndexInAlphabet;
+  })
 };
 
 module.exports = {
